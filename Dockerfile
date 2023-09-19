@@ -13,4 +13,4 @@ RUN python -m pip install -r requirements.txt
 COPY . /app
 
 
-CMD flask --app module run -h 0.0.0.0 -p 8080
+CMD flask --app module run -h 0.0.0.0 -p $PORT
