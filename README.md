@@ -1,3 +1,10 @@
+### Title
+- KPI backend  |  Lab 1
+### Author
+- IO-14 Bohush Illia
+
+### Starting up flask app
+
 #### Clone github repositiry to your machine
 
 Clone repo
