@@ -1,6 +1,21 @@
 version: '3'
 
 services:
+  db:
+    container_name: db
+    image: postgres:15.4-alpine3.18
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+    environment:
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME} 
+    volumes:
+      - pgdata1:/var/lib/postgresql/data
+
   module:
     restart: always
     build:
@@ -16,23 +31,10 @@ services:
       - db:db
     depends_on:
       - db
-  db:
-    container_name: db
-    image: postgres:15.4-alpine3.18
-    ports:
-      - "5432:5432"
-    networks:
-      - backend
-    environment:
-      POSTGRES_PORT: ${DB_PORT}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME} 
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+
 
 volumes:
-  pgdata: {}
+  pgdata1: {}
 
 networks:
   backend:
