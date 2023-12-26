@@ -6,10 +6,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - backend
     environment:
       PORT: "8080"
     ports:
       - "8080:8080"
+    links:
+      - db:db
     depends_on:
       - db
   db:
@@ -17,6 +21,8 @@ services:
     image: postgres:15.4-alpine3.18
     ports:
       - "5432:5432"
+    networks:
+      - backend
     environment:
       POSTGRES_PORT: ${DB_PORT}
       POSTGRES_USER: ${DB_USER}
@@ -27,3 +33,7 @@ services:
 
 volumes:
   pgdata: {}
+
+networks:
+  backend:
+    driver: bridge
