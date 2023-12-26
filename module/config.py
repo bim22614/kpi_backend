@@ -1,4 +1,8 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 PROPAGATE_EXCEPTIONS = True
 FLASK_DEBUG = True
