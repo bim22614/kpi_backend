@@ -13,21 +13,21 @@ app = Flask(__name__)
 app.app_context().push()
 
 
-time.sleep(30)
-print("befor app.config.from_pyfile")
+#time.sleep(30)
+#print("befor app.config.from_pyfile")
 
 app.config.from_pyfile('config.py', silent=True)
 app.register_blueprint(views_blueprint)
 
 
-time.sleep(30)
-print("init")
+#time.sleep(30)
+#print("init")
 
 db.init_app(app)
 migrate = Migrate(app, db)
 
-time.sleep(30)
-print("create")
+#time.sleep(30)
+#print("create")
 
 db.create_all()
 
