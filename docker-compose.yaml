@@ -1,5 +1,17 @@
 version: '3'
 
+volumes:
+  pgdata12: {}
+
+networks:
+  backend1:
+    name: backend1
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/24
+
 services:
   db:
     container_name: db
@@ -7,14 +19,15 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - backend
+      backend1:
+        ipv4_address: 172.21.0.2
     environment:
       POSTGRES_PORT: ${DB_PORT}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME} 
     volumes:
-      - pgdata1:/var/lib/postgresql/data
+      - pgdata12:/var/lib/postgresql/data
 
   module:
     restart: always
@@ -22,7 +35,8 @@ services:
       context: .
       dockerfile: Dockerfile
     networks:
-      - backend
+      backend1:
+        ipv4_address: 172.21.0.3
     environment:
       PORT: "8080"
     ports:
@@ -31,11 +45,3 @@ services:
       - db:db
     depends_on:
       - db
-
-
-volumes:
-  pgdata1: {}
-
-networks:
-  backend:
-    driver: bridge

@@ -6,7 +6,7 @@ load_dotenv()
 
 PROPAGATE_EXCEPTIONS = True
 FLASK_DEBUG = True
-SQLALCHEMY_DATABASE_URI = f'postgresql://{os.environ.get("DB_USER")}:{os.environ.get("DB_PASSWORD")}@127.0.0.1:{os.environ.get("DB_PORT")}/{os.environ.get("DB_NAME")}'
+SQLALCHEMY_DATABASE_URI = f'postgresql://{os.environ.get("DB_USER")}:{os.environ.get("DB_PASSWORD")}@172.21.0.2:{os.environ.get("DB_PORT")}/{os.environ.get("DB_NAME")}'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 API_TITLE = "Finance REST API"
 API_VERSION = "v1"
