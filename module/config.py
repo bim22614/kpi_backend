@@ -7,7 +7,7 @@ load_dotenv()
 PROPAGATE_EXCEPTIONS = True
 FLASK_DEBUG = True
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
-SQLALCHEMY_DATABASE_URI = f'postgresql://{os.getenv("DB_USER")}:{os.getenv("DB_PASSWORD")}@db:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}'
+SQLALCHEMY_DATABASE_URI = f'postgresql://user:Oh3uEpSncflGlnPTjugDndT9E18O6TAl@dpg-cm5hsa6n7f5s73c5ifug-a.oregon-postgres.render.com/test_qhyo'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 API_TITLE = "Finance REST API"
 API_VERSION = "v1"
